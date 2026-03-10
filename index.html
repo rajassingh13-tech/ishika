@@ -97,7 +97,7 @@ header::after {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== NAVIGATION - SINGLE LINE ===== */
+/* ===== NAVIGATION ===== */
 nav {
     display: flex;
     justify-content: center;
@@ -222,7 +222,6 @@ nav button.active {
     }
 }
 
-/* Heart Icon */
 .heart-icon {
     position: absolute;
     top: clamp(10px, 2.5vw, 18px);
@@ -236,7 +235,6 @@ nav button.active {
 
 .heart-icon:hover { transform: scale(1.2); }
 
-/* Premium Styling */
 .card.premium {
     background: linear-gradient(160deg, white, #f0f8ff);
     border: 2px solid rgba(77,166,255,0.3);
@@ -279,7 +277,6 @@ nav button.active {
     box-shadow: 0 3px 12px rgba(255,105,180,0.3);
 }
 
-/* Card Image */
 .card-image {
     border-radius: 15px;
     overflow: hidden;
@@ -298,7 +295,6 @@ nav button.active {
     .card:hover img { transform: scale(1.08); }
 }
 
-/* Card Content */
 .card h3 {
     font-family: 'Playfair Display', serif;
     margin: clamp(10px, 2.5vw, 16px) 0 clamp(4px, 1vw, 8px);
@@ -314,7 +310,6 @@ nav button.active {
     margin: clamp(3px, 0.8vw, 6px) 0;
 }
 
-/* Measurements */
 .measurements {
     background: linear-gradient(135deg, #f8f9fa, #f1f3f4);
     border-radius: 12px;
@@ -338,7 +333,6 @@ nav button.active {
 .card.premium .measurements strong { color: var(--blue); }
 .card.premium.pink .measurements strong { color: #ff69b4; }
 
-/* Wool Info */
 .wool-info {
     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     color: #1565c0;
@@ -349,7 +343,6 @@ nav button.active {
     margin: clamp(8px, 2vw, 12px) 0;
 }
 
-/* Price */
 .price {
     font-family: 'Playfair Display', serif;
     font-size: clamp(20px, 4.5vw, 28px);
@@ -379,7 +372,6 @@ nav button.active {
     margin-left: 6px;
 }
 
-/* Buy Button */
 .buy {
     background: linear-gradient(135deg, var(--primary), #ff1f8f);
     border: none;
@@ -450,7 +442,6 @@ footer::before {
     opacity: 0.95;
 }
 
-/* Instagram */
 .instagram-section {
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(8px);
@@ -665,9 +656,7 @@ footer::before {
     visibility: visible;
 }
 
-.scroll-top:hover {
-    transform: scale(1.1);
-}
+.scroll-top:hover { transform: scale(1.1); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
@@ -782,13 +771,13 @@ footer::before {
             <p class="instagram-label">Follow us on Instagram</p>
             <div class="instagram-handle">
                 <span class="instagram-icon">📸</span>
-		<a href="https://www.instagram.com/_theyarntales_/">@theyarntale</a>
+                <a href="https://www.instagram.com/_theyarntales_/">@theyarntale</a>
             </div>
         </div>
         
         <div class="footer-links">
-            <a href="#">📱 Contact</a>
-            <a href="#">💬 WhatsApp</a>
+            <a href="mailto:________">📧 Email</a>
+            <a href="https://wa.me/919755552525" target="_blank">💬 WhatsApp</a>
         </div>
         
         <p class="copyright">© 2026 The Yarn Tales | Handmade with ❤️</p>
@@ -814,6 +803,7 @@ footer::before {
 
 <script>
 let selectedProduct = {};
+const WHATSAPP_NUMBER = '919755552525';
 
 // Scroll to Top
 const scrollBtn = document.getElementById('scrollTop');
@@ -884,9 +874,8 @@ function buyProduct(name, price, details = '', isPremium = false) {
 }
 
 function orderWhatsApp() {
-    const phone = '919755552525'; // Your number
-    const msg = `Hi! I want to order:\n\n🧸 ${selectedProduct.name}\n💰 ${selectedProduct.price}\n${selectedProduct.details ? '📋 ' + selectedProduct.details : ''}\n\nPlease confirm! 🙏`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '919755552525');
+    const msg = `Hi! I want to order from The Yarn Tales:\n\n🧸 ${selectedProduct.name}\n💰 ${selectedProduct.price}\n${selectedProduct.details ? '📋 ' + selectedProduct.details : ''}\n\nPlease confirm! 🙏`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
     closeModal();
     showToast('📱 Opening WhatsApp...', 'success');
 }
