@@ -514,16 +514,7 @@ function placeOrder() {
 ━━━━━━━━━━━━━━━━━━━━
 
 📋 *Specifications:*
-${currentProduct.details.split('|').map(d => '• ' + d.trim()).join('\n')}
-
-━━━━━━━━━━━━━━━━━━━━
-
-📍 Please share your:
-• Delivery Address
-• Phone Number
-
-Thank you for choosing The Yarn Tales, ${currentProduct.customerName}! 🙏💕
-Handmade with love, just for you! 🧶✨`;
+${currentProduct.details.split('|').map(d => '• ' + d.trim()).join('\n')}`;
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
     closeModal();
