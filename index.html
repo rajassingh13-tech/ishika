@@ -116,12 +116,21 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
 .option-section:nth-child(1) { animation-delay: 0.1s; }
 .option-section:nth-child(2) { animation-delay: 0.2s; }
 .option-section:nth-child(3) { animation-delay: 0.3s; }
+.option-section:nth-child(4) { animation-delay: 0.4s; }
+.option-section:nth-child(5) { animation-delay: 0.5s; }
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .option-label { font-weight: 600; font-size: clamp(12px, 3vw, 14px); color: var(--dark); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 .option-label span { font-size: 18px; }
+.option-label .optional-tag { font-size: clamp(9px, 2vw, 11px); background: linear-gradient(135deg, #e0e0e0, #f5f5f5); color: #666; padding: 2px 8px; border-radius: 10px; font-weight: 500; margin-left: auto; }
 .name-input { width: 100%; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 14px; font-family: 'Poppins', sans-serif; font-size: clamp(13px, 3vw, 15px); transition: all 0.3s ease; background: white; outline: none; }
 .name-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(255,77,166,0.15); }
 .name-input::placeholder { color: #aaa; }
+.customization-textarea { width: 100%; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 14px; font-family: 'Poppins', sans-serif; font-size: clamp(12px, 2.8vw, 14px); transition: all 0.3s ease; background: white; outline: none; resize: vertical; min-height: 100px; max-height: 200px; }
+.customization-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(255,77,166,0.15); }
+.customization-textarea::placeholder { color: #aaa; }
+.customization-hints { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.hint-tag { background: linear-gradient(135deg, var(--lightest), #ffe6f3); border: 1px solid var(--light); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: clamp(9px, 2vw, 11px); cursor: pointer; transition: all 0.3s ease; }
+.hint-tag:hover { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; transform: scale(1.05); }
 .color-options { display: flex; gap: 12px; flex-wrap: wrap; }
 .color-btn { width: 45px; height: 45px; border-radius: 50%; border: 3px solid #e0e0e0; cursor: pointer; transition: all 0.3s ease; position: relative; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
 .color-btn:hover { transform: scale(1.15); }
@@ -309,6 +318,28 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
                 <div class="color-options" id="colorOptions"></div>
             </div>
 
+            <div class="option-section" id="customizationSection">
+                <div class="option-label">
+                    <span>✨</span> Customization Request
+                    <span class="optional-tag">Optional</span>
+                </div>
+                <textarea class="customization-textarea" id="customizationText" placeholder="Tell us how you'd like to customize your crochet item...
+
+Examples:
+• Add a name or initials
+• Change specific colors
+• Add accessories (bow, hat, etc.)
+• Special message on a tag
+• Gift wrapping request"></textarea>
+                <div class="customization-hints">
+                    <span class="hint-tag" onclick="addHint('Add name: ')">📝 Add Name</span>
+                    <span class="hint-tag" onclick="addHint('Custom colors: ')">🌈 Custom Colors</span>
+                    <span class="hint-tag" onclick="addHint('Add accessory: ')">🎀 Add Accessory</span>
+                    <span class="hint-tag" onclick="addHint('Gift wrap with message: ')">🎁 Gift Wrap</span>
+                    <span class="hint-tag" onclick="addHint('Special request: ')">💫 Special Request</span>
+                </div>
+            </div>
+
             <div class="option-section">
                 <div class="option-label"><span>🔢</span> Quantity</div>
                 <div class="quantity-selector">
@@ -344,7 +375,8 @@ let currentProduct = {
     color: '',
     quantity: 1,
     details: '',
-    customerName: ''
+    customerName: '',
+    customization: ''
 };
 
 // Scroll to Top
@@ -396,6 +428,21 @@ function showCategory(cat, btn) {
     });
 }
 
+// Add Hint to Customization
+function addHint(hint) {
+    const textarea = document.getElementById('customizationText');
+    const currentText = textarea.value;
+    
+    if (currentText && !currentText.endsWith('\n') && !currentText.endsWith(' ')) {
+        textarea.value = currentText + '\n' + hint;
+    } else {
+        textarea.value = currentText + hint;
+    }
+    
+    textarea.focus();
+    textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+}
+
 // Open Product Modal
 function openProductModal(card) {
     const modal = document.getElementById('modal');
@@ -409,7 +456,8 @@ function openProductModal(card) {
         details: card.dataset.details,
         color: '',
         quantity: 1,
-        customerName: ''
+        customerName: '',
+        customization: ''
     };
 
     document.getElementById('modalProductImg').src = currentProduct.image;
@@ -417,6 +465,7 @@ function openProductModal(card) {
     document.getElementById('modalProductPrice').textContent = '₹' + currentProduct.price;
     document.getElementById('quantity').textContent = '1';
     document.getElementById('customerName').value = '';
+    document.getElementById('customizationText').value = '';
 
     // Generate Color Options
     const colorContainer = document.getElementById('colorOptions');
@@ -477,6 +526,7 @@ function updateTotal() {
 // Place Order on WhatsApp
 function placeOrder() {
     const customerName = document.getElementById('customerName').value.trim();
+    const customizationText = document.getElementById('customizationText').value.trim();
     
     if (!customerName) {
         showToast('⚠️ Please enter your name!', 'error');
@@ -489,7 +539,19 @@ function placeOrder() {
     }
     
     currentProduct.customerName = customerName;
+    currentProduct.customization = customizationText;
     const total = currentProduct.price * currentProduct.quantity;
+    
+    // Build customization section only if there's customization text
+    let customizationSection = '';
+    if (currentProduct.customization) {
+        customizationSection = `
+
+━━━━━━━━━━━━━━━━━━━━
+
+✨ *Customization Request:*
+${currentProduct.customization}`;
+    }
     
     const message = `🧶 *THE YARN TALES - New Order* 🧶
 
@@ -514,7 +576,7 @@ function placeOrder() {
 ━━━━━━━━━━━━━━━━━━━━
 
 📋 *Specifications:*
-${currentProduct.details.split('|').map(d => '• ' + d.trim()).join('\n')}`;
+${currentProduct.details.split('|').map(d => '• ' + d.trim()).join('\n')}${customizationSection}`;
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
     closeModal();
