@@ -517,7 +517,6 @@ function placeOrder() {
 ${currentProduct.details.split('|').map(d => '• ' + d.trim()).join('\n')}
 
 ━━━━━━━━━━━━━━━━━━
-
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
     closeModal();
     showToast('📱 Opening WhatsApp...', 'success');
@@ -562,5 +561,6 @@ function createConfetti() {
 
 </body>
 </html>
+
 
 
