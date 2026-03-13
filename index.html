@@ -46,19 +46,20 @@ nav button.active { background: linear-gradient(135deg, var(--primary), #ff6bb3)
 .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(18px, 4vw, 35px); margin-top: clamp(20px, 4vw, 40px); }
 
 .card { background: linear-gradient(160deg, white, #fffafc); border-radius: 22px; padding: clamp(16px, 3.5vw, 25px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: transform 0.4s ease, box-shadow 0.4s ease; position: relative; overflow: hidden; animation: cardIn 0.5s ease backwards; border: 1px solid rgba(255,182,217,0.2); cursor: pointer; }
-.card:nth-child(1) { animation-delay: 0.1s; } .card:nth-child(2) { animation-delay: 0.2s; } .card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(1) { animation-delay: 0.1s; } .card:nth-child(2) { animation-delay: 0.2s; } .card:nth-child(3) { animation-delay: 0.3s; } .card:nth-child(4) { animation-delay: 0.4s; } .card:nth-child(5) { animation-delay: 0.5s; } .card:nth-child(6) { animation-delay: 0.6s; } .card:nth-child(7) { animation-delay: 0.7s; } .card:nth-child(8) { animation-delay: 0.8s; } .card:nth-child(9) { animation-delay: 0.9s; }
 @keyframes cardIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 .card::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); transition: left 0.6s ease; }
 .card:hover::after { left: 100%; }
 @media (hover: hover) { .card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(255,77,166,0.25); } }
 
-.heart-icon { position: absolute; top: clamp(10px, 2.5vw, 18px); right: clamp(10px, 2.5vw, 18px); font-size: clamp(20px, 4.5vw, 26px); cursor: pointer; z-index: 10; transition: transform 0.3s ease; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15)); }
-.heart-icon:hover { transform: scale(1.2); }
 .card.premium { background: linear-gradient(160deg, white, #f0f8ff); border: 2px solid rgba(77,166,255,0.3); }
 .card.premium.pink { background: linear-gradient(160deg, white, #fff0f5); border-color: rgba(255,105,180,0.3); }
+.card.premium.purple { background: linear-gradient(160deg, white, #f5f0ff); border-color: rgba(147,112,219,0.3); }
 .premium-ribbon { position: absolute; top: clamp(10px, 2.5vw, 15px); left: clamp(-30px, -7vw, -28px); background: linear-gradient(135deg, var(--gold), #ffb347); color: white; padding: clamp(3px, 0.8vw, 5px) clamp(25px, 6vw, 35px); font-size: clamp(7px, 1.8vw, 9px); font-weight: 700; transform: rotate(-45deg); box-shadow: 0 2px 8px rgba(255,165,0,0.4); z-index: 10; letter-spacing: 0.5px; }
 .premium-badge { background: linear-gradient(135deg, #4da6ff, var(--blue)); color: white; padding: clamp(3px, 0.8vw, 5px) clamp(8px, 2vw, 14px); border-radius: 15px; font-size: clamp(8px, 1.8vw, 10px); font-weight: 700; display: inline-block; margin-bottom: clamp(6px, 1.5vw, 10px); box-shadow: 0 3px 12px rgba(30,144,255,0.3); }
 .premium-badge.pink { background: linear-gradient(135deg, #ff69b4, #ff1493); box-shadow: 0 3px 12px rgba(255,105,180,0.3); }
+.premium-badge.purple { background: linear-gradient(135deg, #9370db, #8a2be2); box-shadow: 0 3px 12px rgba(147,112,219,0.3); }
+.premium-badge.green { background: linear-gradient(135deg, #4caf50, #2e7d32); box-shadow: 0 3px 12px rgba(76,175,80,0.3); }
 .card-image { border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 .card img { width: 100%; height: clamp(150px, 28vw, 200px); object-fit: cover; transition: transform 0.4s ease; background: linear-gradient(135deg, #ffd6ec, var(--light)); }
 @media (hover: hover) { .card:hover img { transform: scale(1.08); } }
@@ -67,21 +68,27 @@ nav button.active { background: linear-gradient(135deg, var(--primary), #ff6bb3)
 .measurements { background: linear-gradient(135deg, #f8f9fa, #f1f3f4); border-radius: 12px; padding: clamp(8px, 2vw, 14px); margin: clamp(8px, 2vw, 12px) 0; font-size: clamp(10px, 2.2vw, 12px); color: #555; border-left: 3px solid var(--primary); text-align: left; }
 .card.premium .measurements { border-left-color: #4da6ff; }
 .card.premium.pink .measurements { border-left-color: #ff69b4; }
+.card.premium.purple .measurements { border-left-color: #9370db; }
 .measurements span { display: block; margin: clamp(2px, 0.5vw, 4px) 0; }
 .measurements strong { color: var(--primary); }
 .card.premium .measurements strong { color: var(--blue); }
 .card.premium.pink .measurements strong { color: #ff69b4; }
+.card.premium.purple .measurements strong { color: #9370db; }
 .wool-info { background: linear-gradient(135deg, #e3f2fd, #bbdefb); color: #1565c0; padding: clamp(6px, 1.5vw, 10px) clamp(10px, 2.5vw, 15px); border-radius: 10px; font-size: clamp(9px, 2vw, 11px); font-weight: 600; margin: clamp(8px, 2vw, 12px) 0; }
 .price { font-family: 'Playfair Display', serif; font-size: clamp(20px, 4.5vw, 28px); color: var(--primary); font-weight: 700; margin: clamp(10px, 2vw, 15px) 0; }
 .card.premium .price { color: var(--blue); }
 .card.premium.pink .price { color: #ff1493; }
+.card.premium.purple .price { color: #8a2be2; }
 .original-price { font-family: 'Poppins', sans-serif; font-size: clamp(11px, 2.5vw, 14px); color: #aaa; text-decoration: line-through; margin-right: 8px; }
 .discount-badge { background: linear-gradient(135deg, #ff4757, #ff3838); color: white; padding: clamp(2px, 0.5vw, 3px) clamp(5px, 1.2vw, 8px); border-radius: 6px; font-size: clamp(7px, 1.8vw, 9px); font-weight: 700; margin-left: 6px; }
 .select-btn { background: linear-gradient(135deg, var(--primary), #ff1f8f); border: none; color: white; padding: clamp(10px, 2.5vw, 14px) clamp(20px, 5vw, 35px); border-radius: 30px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(11px, 2.5vw, 14px); transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255,77,166,0.35); width: 100%; max-width: 220px; }
 .card.premium .select-btn { background: linear-gradient(135deg, #4da6ff, var(--blue)); box-shadow: 0 6px 20px rgba(30,144,255,0.35); }
 .card.premium.pink .select-btn { background: linear-gradient(135deg, #ff69b4, #ff1493); box-shadow: 0 6px 20px rgba(255,105,180,0.35); }
+.card.premium.purple .select-btn { background: linear-gradient(135deg, #9370db, #8a2be2); box-shadow: 0 6px 20px rgba(147,112,219,0.35); }
 .select-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,77,166,0.45); }
 .select-btn:active { transform: scale(0.97); }
+
+.category-tag { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); color: white; padding: 4px 10px; border-radius: 12px; font-size: clamp(8px, 1.8vw, 10px); font-weight: 600; z-index: 5; backdrop-filter: blur(4px); }
 
 footer { background: linear-gradient(135deg, #ff6bb3, var(--secondary), var(--light)); color: white; text-align: center; padding: clamp(30px, 6vw, 50px) clamp(12px, 3vw, 25px); margin-top: clamp(40px, 8vw, 70px); position: relative; overflow: hidden; }
 footer::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 12px), repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 12px); }
@@ -154,7 +161,6 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
 
 .toast { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(100px); background: linear-gradient(135deg, #333, #555); color: white; padding: clamp(10px, 2.5vw, 15px) clamp(18px, 4vw, 30px); border-radius: 30px; font-size: clamp(11px, 2.5vw, 13px); font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2000; opacity: 0; transition: all 0.4s ease; }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-.toast.love { background: linear-gradient(135deg, var(--primary), #ff1f8f); }
 .toast.success { background: linear-gradient(135deg, var(--green), #128c7e); }
 .toast.error { background: linear-gradient(135deg, #ff4757, #ff3838); }
 .scroll-top { position: fixed; bottom: 20px; right: 20px; width: clamp(40px, 9vw, 50px); height: clamp(40px, 9vw, 50px); background: linear-gradient(135deg, var(--primary), #ff1f8f); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: clamp(16px, 4vw, 22px); box-shadow: 0 5px 20px rgba(255,77,166,0.4); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
@@ -179,8 +185,9 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
 
 <nav>
     <button class="active" onclick="showCategory('all', this)">✨ All</button>
-    <button onclick="showCategory('turtle', this)">🐢 Turtles</button>
-    <button onclick="showCategory('bunny', this)">🐰 Bunnies</button>
+    <button onclick="showCategory('plushies', this)">🧸 Plushies</button>
+    <button onclick="showCategory('keychains', this)">🔑 Keychains</button>
+    <button onclick="showCategory('handbags', this)">👜 Handbags</button>
 </nav>
 
 <main class="container">
@@ -189,8 +196,10 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
 
     <div class="products">
 
+        <!-- ========== PLUSHIES ========== -->
+
         <!-- Premium White & Blue Turtle -->
-        <article class="card turtle premium" onclick="openProductModal(this)" 
+        <article class="card plushies premium" onclick="openProductModal(this)" 
             data-name="White & Blue Premium Turtle"
             data-price="500"
             data-image="https://via.placeholder.com/400x250/e3f2fd/1565c0?text=🐢+Premium+Turtle"
@@ -198,7 +207,7 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
             data-color-codes="#e3f2fd,#87ceeb,#006994"
             data-details="Length: 9.8 inches | Breadth: 7 inches | Height: 4 inches | Premium Wool">
             <div class="premium-ribbon">⭐ PREMIUM</div>
-            <span class="heart-icon" onclick="event.stopPropagation(); toggleWishlist(this, 'White & Blue Premium Turtle')">🤍</span>
+            <span class="category-tag">🧸 Plushie</span>
             <div class="card-image">
                 <img src="https://via.placeholder.com/400x250/e3f2fd/1565c0?text=🐢+Premium+Turtle" alt="Premium Turtle" loading="lazy">
             </div>
@@ -215,7 +224,7 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
         </article>
 
         <!-- White Bunny with Heart -->
-        <article class="card bunny premium pink" onclick="openProductModal(this)"
+        <article class="card plushies premium pink" onclick="openProductModal(this)"
             data-name="White Bunny Holding Heart"
             data-price="850"
             data-image="https://via.placeholder.com/400x250/fff0f5/ff69b4?text=🐰+Bunny+With+❤️"
@@ -223,7 +232,7 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
             data-color-codes="#ffffff,#fffdd0,#ffb6c1"
             data-details="Height: 12 inches | Breadth: 9.4 inches | Depth: 8 inches | Special Edition">
             <div class="premium-ribbon">💕 SPECIAL</div>
-            <span class="heart-icon" onclick="event.stopPropagation(); toggleWishlist(this, 'White Bunny Holding Heart')">🤍</span>
+            <span class="category-tag">🧸 Plushie</span>
             <div class="card-image">
                 <img src="https://via.placeholder.com/400x250/fff0f5/ff69b4?text=🐰+Bunny+With+❤️" alt="Bunny with Heart" loading="lazy">
             </div>
@@ -239,35 +248,161 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
             <button class="select-btn">Select Options 🛒</button>
         </article>
 
-        <!-- Mini Companion Turtle -->
-        <article class="card bunny" onclick="openProductModal(this)"
-            data-name="Mini Companion Turtle"
-            data-price="199"
-            data-original-price="250"
+        <!-- ========== KEYCHAINS ========== -->
+
+        <!-- Mushroom Keychain -->
+        <article class="card keychains" onclick="openProductModal(this)"
+            data-name="Cute Mushroom Keychain"
+            data-price="149"
+            data-image="https://via.placeholder.com/400x250/ffe4e1/ff6b6b?text=🍄+Mushroom"
+            data-colors="Red & White,Pink & White,Brown & Cream,Purple & White"
+            data-color-codes="#ff6b6b,#ffb6c1,#8b4513,#9370db"
+            data-details="Height: 2.5 inches | Width: 1.5 inches | With Metal Keyring | Soft Cotton Fill">
+            <span class="category-tag">🔑 Keychain</span>
+            <div class="card-image">
+                <img src="https://via.placeholder.com/400x250/ffe4e1/ff6b6b?text=🍄+Mushroom" alt="Mushroom Keychain" loading="lazy">
+            </div>
+            <h3>Cute Mushroom Keychain</h3>
+            <p class="product-desc">Adorable mushroom to carry everywhere! 🍄</p>
+            <div class="measurements">
+                <span>📏 <strong>Height:</strong> 2.5 inches</span>
+                <span>📐 <strong>Width:</strong> 1.5 inches</span>
+                <span>🔗 <strong>Keyring:</strong> Metal</span>
+            </div>
+            <p class="price">₹149</p>
+            <button class="select-btn">Select Options 🛒</button>
+        </article>
+
+        <!-- Pink Bow Keychain -->
+        <article class="card keychains premium pink" onclick="openProductModal(this)"
+            data-name="Pretty Pink Bow Keychain"
+            data-price="129"
+            data-image="https://via.placeholder.com/400x250/fff0f5/ff69b4?text=🎀+Pink+Bow"
+            data-colors="Hot Pink,Baby Pink,Lavender Pink,Coral Pink"
+            data-color-codes="#ff69b4,#ffb6c1,#dda0dd,#ff7f7f"
+            data-details="Width: 3 inches | Height: 2 inches | With Metal Keyring | Elegant Design">
+            <span class="category-tag">🔑 Keychain</span>
+            <div class="card-image">
+                <img src="https://via.placeholder.com/400x250/fff0f5/ff69b4?text=🎀+Pink+Bow" alt="Pink Bow Keychain" loading="lazy">
+            </div>
+            <span class="premium-badge pink">🎀 TRENDY</span>
+            <h3>Pretty Pink Bow Keychain</h3>
+            <p class="product-desc">Elegant bow for your keys & bags! 🎀</p>
+            <div class="measurements">
+                <span>📏 <strong>Width:</strong> 3 inches</span>
+                <span>📐 <strong>Height:</strong> 2 inches</span>
+                <span>🔗 <strong>Keyring:</strong> Metal</span>
+            </div>
+            <p class="price">₹129</p>
+            <button class="select-btn">Select Options 🛒</button>
+        </article>
+
+        <!-- Small Turtle Keychain -->
+        <article class="card keychains" onclick="openProductModal(this)"
+            data-name="Mini Turtle Keychain"
+            data-price="159"
+            data-original-price="199"
             data-image="https://via.placeholder.com/400x250/e8f5e9/4caf50?text=🐢+Mini+Turtle"
             data-colors="Green,Blue,Pink,Yellow"
             data-color-codes="#4caf50,#2196f3,#e91e63,#ffeb3b"
-            data-details="Length: 4 inches | Breadth: 3 inches | Height: 2 inches | Perfect with Bunny!">
-            <span class="heart-icon" onclick="event.stopPropagation(); toggleWishlist(this, 'Mini Companion Turtle')">🤍</span>
+            data-details="Length: 2 inches | Width: 1.5 inches | With Metal Keyring | Super Cute">
+            <span class="category-tag">🔑 Keychain</span>
             <div class="card-image">
-                <img src="https://via.placeholder.com/400x250/e8f5e9/4caf50?text=🐢+Mini+Turtle" alt="Mini Turtle" loading="lazy">
+                <img src="https://via.placeholder.com/400x250/e8f5e9/4caf50?text=🐢+Mini+Turtle" alt="Mini Turtle Keychain" loading="lazy">
             </div>
-            <h3>Mini Companion Turtle</h3>
-            <p class="product-desc">Perfect buddy for your bunny! 🐰🐢</p>
+            <h3>Mini Turtle Keychain</h3>
+            <p class="product-desc">Tiny turtle companion for your keys! 🐢</p>
             <div class="measurements">
-                <span>📏 <strong>Length:</strong> 4 inches</span>
-                <span>📐 <strong>Breadth:</strong> 3 inches</span>
-                <span>📦 <strong>Height:</strong> 2 inches</span>
+                <span>📏 <strong>Length:</strong> 2 inches</span>
+                <span>📐 <strong>Width:</strong> 1.5 inches</span>
+                <span>🔗 <strong>Keyring:</strong> Metal</span>
             </div>
             <p class="price">
-                <span class="original-price">₹250</span>₹199
+                <span class="original-price">₹199</span>₹159
                 <span class="discount-badge">20% OFF</span>
             </p>
             <button class="select-btn">Select Options 🛒</button>
         </article>
 
+        <!-- Octopus Keychain -->
+        <article class="card keychains premium purple" onclick="openProductModal(this)"
+            data-name="Cute Octopus Keychain"
+            data-price="179"
+            data-image="https://via.placeholder.com/400x250/f5f0ff/9370db?text=🐙+Octopus"
+            data-colors="Purple,Pink,Blue,Mint Green"
+            data-color-codes="#9370db,#ff69b4,#6495ed,#98fb98"
+            data-details="Height: 2.5 inches | Width: 2.5 inches | With Metal Keyring | 8 Cute Tentacles">
+            <span class="category-tag">🔑 Keychain</span>
+            <div class="card-image">
+                <img src="https://via.placeholder.com/400x250/f5f0ff/9370db?text=🐙+Octopus" alt="Octopus Keychain" loading="lazy">
+            </div>
+            <span class="premium-badge purple">🐙 BESTSELLER</span>
+            <h3>Cute Octopus Keychain</h3>
+            <p class="product-desc">8 tentacles of cuteness! 🐙💜</p>
+            <div class="measurements">
+                <span>📏 <strong>Height:</strong> 2.5 inches</span>
+                <span>📐 <strong>Width:</strong> 2.5 inches</span>
+                <span>🔗 <strong>Keyring:</strong> Metal</span>
+            </div>
+            <p class="price">₹179</p>
+            <button class="select-btn">Select Options 🛒</button>
+        </article>
+
+        <!-- ========== HANDBAGS ========== -->
+
+        <!-- Pink Crochet Handbag -->
+        <article class="card handbags premium pink" onclick="openProductModal(this)"
+            data-name="Pink Crochet Handbag"
+            data-price="1299"
+            data-image="https://via.placeholder.com/400x250/fff0f5/ff1493?text=👜+Pink+Bag"
+            data-colors="Hot Pink,Baby Pink,Rose Pink,Blush Pink"
+            data-color-codes="#ff1493,#ffb6c1,#ff007f,#de5d83"
+            data-details="Height: 10 inches | Width: 12 inches | Depth: 4 inches | With Zipper & Inner Pocket | Cotton Lining">
+            <div class="premium-ribbon">👜 PREMIUM</div>
+            <span class="category-tag">👜 Handbag</span>
+            <div class="card-image">
+                <img src="https://via.placeholder.com/400x250/fff0f5/ff1493?text=👜+Pink+Bag" alt="Pink Crochet Handbag" loading="lazy">
+            </div>
+            <span class="premium-badge pink">💗 HANDMADE</span>
+            <h3>Pink Crochet Handbag</h3>
+            <p class="product-desc">Stylish pink bag for every occasion! 👜💖</p>
+            <div class="measurements">
+                <span>📏 <strong>Height:</strong> 10 inches</span>
+                <span>📐 <strong>Width:</strong> 12 inches</span>
+                <span>📦 <strong>Depth:</strong> 4 inches</span>
+            </div>
+            <p class="price">₹1,299</p>
+            <button class="select-btn">Select Options 🛒</button>
+        </article>
+
+        <!-- Blue & White Crochet Handbag -->
+        <article class="card handbags premium" onclick="openProductModal(this)"
+            data-name="Blue & White Crochet Handbag"
+            data-price="1399"
+            data-image="https://via.placeholder.com/400x250/e3f2fd/1565c0?text=👜+Blue+White+Bag"
+            data-colors="Sky Blue & White,Navy & White,Teal & White,Ocean Blue & Cream"
+            data-color-codes="#87ceeb,#000080,#008080,#006994"
+            data-details="Height: 10 inches | Width: 12 inches | Depth: 4 inches | With Zipper & Inner Pocket | Cotton Lining">
+            <div class="premium-ribbon">👜 PREMIUM</div>
+            <span class="category-tag">👜 Handbag</span>
+            <div class="card-image">
+                <img src="https://via.placeholder.com/400x250/e3f2fd/1565c0?text=👜+Blue+White+Bag" alt="Blue White Crochet Handbag" loading="lazy">
+            </div>
+            <span class="premium-badge">💙 HANDMADE</span>
+            <h3>Blue & White Crochet Handbag</h3>
+            <p class="product-desc">Classic blue & white elegance! 👜💙</p>
+            <div class="measurements">
+                <span>📏 <strong>Height:</strong> 10 inches</span>
+                <span>📐 <strong>Width:</strong> 12 inches</span>
+                <span>📦 <strong>Depth:</strong> 4 inches</span>
+            </div>
+            <p class="price">₹1,399</p>
+            <button class="select-btn">Select Options 🛒</button>
+        </article>
+
     </div>
 </main>
+
 <footer>
     <div class="footer-content">
         <h2 class="footer-brand">The Yarn Tales</h2>
@@ -277,7 +412,7 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
             <p class="instagram-label">Follow us on Instagram</p>
             <div class="instagram-handle">
                 <span class="instagram-icon">📸</span>
-                <a href="https://www.instagram.com/_theyarntales_/">@theyarntale</a>
+                <span>@_______________</span>
             </div>
         </div>
         
@@ -286,7 +421,7 @@ footer::before { content: ''; position: absolute; inset: 0; background: repeatin
             <a href="https://wa.me/918755552525" target="_blank">💬 WhatsApp</a>
         </div>
         
-        <p class="copyright">© 2026 The Yarn Tales | Handmade with ❤️</p>
+        <p class="copyright">© 2025 The Yarn Tales | Handmade with ❤️</p>
     </div>
 </footer>
 
@@ -397,17 +532,6 @@ function showToast(msg, type = '') {
     setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
-// Wishlist Toggle
-function toggleWishlist(el, name) {
-    if (el.textContent === '🤍') {
-        el.textContent = '❤️';
-        showToast('💕 Added to wishlist!', 'love');
-    } else {
-        el.textContent = '🤍';
-        showToast('Removed from wishlist');
-    }
-}
-
 // Category Filter
 function showCategory(cat, btn) {
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
@@ -462,7 +586,7 @@ function openProductModal(card) {
 
     document.getElementById('modalProductImg').src = currentProduct.image;
     document.getElementById('modalProductName').textContent = currentProduct.name;
-    document.getElementById('modalProductPrice').textContent = '₹' + currentProduct.price;
+    document.getElementById('modalProductPrice').textContent = '₹' + currentProduct.price.toLocaleString('en-IN');
     document.getElementById('quantity').textContent = '1';
     document.getElementById('customerName').value = '';
     document.getElementById('customizationText').value = '';
@@ -520,7 +644,7 @@ function changeQuantity(delta) {
 // Update Total Price
 function updateTotal() {
     const total = currentProduct.price * currentProduct.quantity;
-    document.getElementById('totalPrice').textContent = '₹' + total;
+    document.getElementById('totalPrice').textContent = '₹' + total.toLocaleString('en-IN');
 }
 
 // Place Order on WhatsApp
@@ -569,9 +693,9 @@ ${currentProduct.customization}`;
 ━━━━━━━━━━━━━━━━━━━━
 
 💰 *Price Details:*
-• Unit Price: ₹${currentProduct.price}
+• Unit Price: ₹${currentProduct.price.toLocaleString('en-IN')}
 • Quantity: ${currentProduct.quantity}
-• *Total: ₹${total}*
+• *Total: ₹${total.toLocaleString('en-IN')}*
 
 ━━━━━━━━━━━━━━━━━━━━
 
@@ -622,4 +746,3 @@ function createConfetti() {
 
 </body>
 </html>
-
